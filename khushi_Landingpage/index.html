@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Colonization: Humanity's Future</title>
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-QSZgJEy3OrYeFsQwQ7O8ZwF64FV3a+K3h8ReBSSmX8L8CjMPD3gR8CNrkSvmdmLlY8/1G3Qltu4B4k+lgt8JdA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset styles and global settings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* Light text */
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Full viewport height */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative; /* Added relative positioning */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            backdrop-filter: blur(10px); /* Apply a blur effect behind the nav */
+            text-align: center;
+            padding: 20px 0; /* Adjusted padding */
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px; /* Increased header height */
+        }
+
+        header .logo {
+            position: absolute; /* Absolute positioning for logo */
+            top: 70px; /* Adjusted top position */
+            right:950px; /* Adjusted left position */
+            color: #ffffff; /* Icon color */
+            font-size: 1.5em; /* Adjust size */
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ffffff; /* Text color */
+        }
+
+        header nav {
+            display: flex;
+            justify-content: center;
+            padding: 8px 0; /* Adjusted padding */
+            border-radius: 8px;
+            margin-top: -10px; /* Adjusted margin to raise nav */
+            background-color: rgba(255, 255, 255, 0.2); /* White with 20% opacity */
+            backdrop-filter: blur(10px); /* Apply a blur effect behind the nav */
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 16px; /* Maintain button size */
+            margin: 0 10px; /* Adjusted margin */
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #4CAF50; /* Green on hover */
+        }
+
+        section {
+            padding: 100px 0; /* Adjust as needed */
+            text-align: center;
+            color: #ffffff; /* Light text */
+            margin-top: 100px; /* Offset to account for fixed header */
+            position: relative; /* Ensure relative positioning for background images */
+        }
+
+        section::before {
+            content: "";
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        section#overview::before {
+            background-image: url('background.jpg'); /* Replace with your image path */
+            opacity: 0.5; /* Adjust transparency */
+        }
+
+        section#challenges::before {
+            background-image: url('background2.jpg'); /* Replace with your image path */
+            opacity: 0.3; /* Adjusted transparency */
+        }
+
+        section#current-efforts::before {
+            background-image: url('background3.jpg'); /* Replace with your image path */
+            opacity: 0.5; /* Adjust transparency */
+        }
+
+        section#cta::before {
+            background-image: url('background4.jpg'); /* Replace with your image path */
+            opacity: 0.5; /* Adjust transparency */
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50; /* Green button */
+            color: #ffffff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        form.signup-form {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        form.signup-form input[type=email] {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+            font-size: 1em;
+        }
+
+        form.signup-form button {
+            background-color: #4CAF50; /* Match the green color */
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px; /* Adjusted padding to match .btn */
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        form.signup-form button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9); /* Adjusted transparency */
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            color: #ffffff;
+            margin-top: auto; /* Pushes footer to the bottom */
+        }
+
+        footer p {
+            font-size: 0.9em;
+        }
+
+        .social-icons {
+            margin-top: 10px; /* Adjusted margin for spacing */
+            text-align: center; /* Center align the icons */
+        }
+
+        .social-icon {
+            display: inline-block;
+            margin: 0 10px; /* Adjusted margin */
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon i {
+            font-size: 30px; /* Adjusted size */
+            color: #ffffff; /* Icon color matches footer text color */
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+
+        @media (max-width: 768px) {
+            header {
+                height: 80px; /* Adjusted height for smaller screens */
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header .logo {
+                font-size: 1.3em; /* Adjusted size */
+                left: 10px; /* Keep it aligned with larger screens */
+            }
+
+            header nav {
+                flex-wrap: wrap;
+                margin-top: 5px;
+                margin-bottom: -10px; /* Adjusted margin */
+            }
+
+            header nav a {
+                font-size: 0.9em; /* Adjusted font size */
+                padding: 6px 12px; /* Maintain button size */
+                margin: 5px; /* Adjusted margin */
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            section p {
+                font-size: 1em;
+            }
+
+            form.signup-form input[type=email] {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .social-icons {
+                margin-top: 20px; /* Adjusted margin for spacing */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <i class="fas fa-rocket logo" style="font-size: 15px;"> space-C</i> <!-- Rocket icon added here -->
+            <h1>Space Colonization</h1>
+            <nav>
+                <a href="#overview">Overview</a>
+                <a href="#challenges">Challenges</a>
+                <a href="#current-efforts">Current Efforts</a>
+                <a href="#cta">Get Involved</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="overview">
+        <div class="container">
+            <h2>Why Space Colonization?</h2>
+            <p>Space colonization offers the potential to ensure the survival of humanity, expand scientific knowledge, and explore new frontiers beyond Earth.</p>
+            <a href="#learn-more" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section id="challenges">
+        <div class="container">
+            <h2>Challenges of Space Colonization</h2>
+            <p>Living in space or on other planets presents challenges such as radiation exposure, limited resources, and adapting to different gravity environments.</p>
+            <a href="#current-efforts" class="btn">Explore Challenges</a>
+        </div>
+    </section>
+
+    <section id="current-efforts">
+        <div class="container">
+            <h2>Current Efforts</h2>
+            <p>Space agencies and private companies are actively researching technologies for sustainable habitats, Mars missions, and resource utilization.</p>
+            <a href="#cta" class="btn">Get Involved</a>
+        </div>
+    </section>
+
+    <section id="cta">
+        <div class="container">
+            <h2>Join Us in Shaping the Future</h2>
+            <p>Sign up for updates and be part of the community passionate about space exploration and colonization.</p>
+            <form action="#" method="post" class="signup-form" id="signupForm">
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                <button type="submit" id="submitBtn">Sign Up</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Space Colonization Initiative. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('header nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href').substring(1);
+                document.getElementById(sectionId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form validation and submission
+        const form = document.getElementById('signupForm');
+        const emailInput = document.getElementById('email');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (validateEmail(emailInput.value)) {
+                alert('Email submitted successfully!');
+                form.reset();
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+    </script>
+</body>
+</html>
